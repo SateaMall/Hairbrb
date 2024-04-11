@@ -23,6 +23,6 @@ export class FormResearchComponent {
   onSubmit() {
     console.warn(this.formData);
   }
-    //TODO Maxdistance is not being retreived correctly and start services 
+    //TODO start services 
 
 }
