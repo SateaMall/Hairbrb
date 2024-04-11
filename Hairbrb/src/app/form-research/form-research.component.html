@@ -1,1 +1,123 @@
-<p>form-research works!</p>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+    
+      <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="formbold-form-title">
+            <h2 class="">Rental search form</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+  
+        <div class="formbold-input-flex">
+            <!-- Start Date -->
+          <div>
+            <label for="start_date" class="formbold-form-label">
+                Start Date:
+            </label>
+            <input
+              type="date"
+              name="start_date"
+              id="start_date"
+              class="formbold-form-input"
+              [(ngModel)]="formData.startDate"
+            />
+          </div>
+          <!-- End Date -->
+          <div>
+            <label for="end_date" class="formbold-form-label"> End Date: </label>
+            <input
+              type="date"
+              name="end_date"
+              id="end_date"
+              class="formbold-form-input"
+              [(ngModel)]="formData.endDate"
+            />
+          </div>
+        </div>
+  
+        <div class="formbold-input-flex">
+          <div>
+            <label for="minBedrooms" class="formbold-form-label"> Minimum bedrooms </label>
+            <input
+              type="number"
+              name="minBedrooms"
+              id="minBedrooms"
+              class="formbold-form-input"
+              [(ngModel)]="formData.minBedrooms"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="min_beds" class="formbold-form-label"> Minimum beds </label>
+            <input
+              type="number"
+              name="min_beds"
+              id="min_beds"
+              class="formbold-form-input"
+              [(ngModel)]="formData.minBeds"
+              min="&"
+            />
+          </div>
+        </div>
+  
+        <div class="formbold-mb-3">
+          <label for="max_price" class="formbold-form-label">
+            Maximum Price
+          </label>
+          <input
+            type="number"
+            name="max_price"
+            id="max_price"
+            class="formbold-form-input"
+            [(ngModel)]="formData.maxPrice"
+          />
+        </div>
+  
+        <div class="formbold-mb-3">
+          <label for="max_distance" class="formbold-form-label">
+            Maximum Distance to City Center (in meters):
+          </label>
+          <input
+            type="range"
+            name="max_distance"
+            id="max_distance"
+            class="formbold-form-input"
+            min="500"
+            max="20000"
+            step="500"
+            [(ngModel)]="formData.maxDistance"
+          />
+          <p class="font_gray"> {{ formData.maxDistance }} meters</p>
+
+        </div>
+  
+        <div class="formbold-input-flex">
+          <div>
+            <label for="state" class="formbold-form-label"> State/Prvince </label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              class="formbold-form-input"
+              [(ngModel)]="formData.state"
+            />
+          </div>
+          <div>
+            <label for="country" class="formbold-form-label"> Country </label>
+            <input
+              type="text"
+              name="country"
+              id="country"
+              class="formbold-form-input"
+              [(ngModel)]="formData.country"
+            />
+          </div>
+        </div>
+  
+  
+        <button class="formbold-btn" type="submit">Search</button>
+      </form>
+    </div>
+  </div>

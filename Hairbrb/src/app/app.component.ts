@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ResultResearchComponent } from './result-research/result-research.component';
 import { FormResearchComponent } from './form-research/form-research.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
