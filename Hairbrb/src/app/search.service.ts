@@ -1,22 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Offer } from './models/offer.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Search } from './models/search.model';
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
   private baseUrl = 'http://localhost:3000';
   private data: string[]= ["hi"];
-
+  private form!: Search;
   constructor(private _http:HttpClient) {}
   
-  setSearch(startDate :string, endDate :string, minBedrooms:number, minBeds: number,maxPrice: number, maxDistance:number, state:string, coutnry:string): string[]{
-    this.data=[endDate];
-    return this.data;
+  setSearch(formData: Search){
+    this.form=formData;
+    
   }
+
   getBiens(){
-    return this.data;
+    return this.findAllOffers()
   }
 
   

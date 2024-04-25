@@ -107,6 +107,7 @@
           <div>
             <label for="country" class="formbold-form-label"> Country </label>
             <input
+              disabled="France"
               type="text"
               name="country"
               id="country"
@@ -121,3 +122,9 @@
       </form>
     </div>
   </div>
+
+  <!--div *ngIf="submitted" class="results"-->
+    
+    <router-outlet></router-outlet>
+    
+  <!--/div-->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-result-research',
@@ -10,12 +11,13 @@ import { NgFor } from '@angular/common';
   styleUrl: './result-research.component.css'
 })
 export class ResultResearchComponent implements OnInit{
-  data: String[] =[];
-  constructor(public _search: SearchService){
+  data: any;
+  constructor(public _search: SearchService,private router: Router){
   }
 
   ngOnInit(): void {
     this.data=this._search.getBiens();
+    console.warn("hi");
     console.warn(this.data);
   }
 

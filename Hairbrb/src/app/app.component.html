@@ -10,20 +10,15 @@
 
   <!-- Page Content -->
   <section class="py-5">
-    <div class="container">
+    <div ngIF class="container">
 
     </div>
 
     <div class="form">
-      <app-form-research></app-form-research>
+      <router-outlet></router-outlet>
     </div>
   </section>
 
 
-  <app-result-research></app-result-research>
-
-
-
-
 <app-footer></app-footer>
-<router-outlet />
+
