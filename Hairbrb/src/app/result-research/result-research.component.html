@@ -1,6 +1,3 @@
-<!--  
-<ul>
-        <li *ngFor="let item of this._search.getBiens()">{{ item }}</li>
-</ul>
--->
-<p>yo</p>
+<div class="offers" *ngFor="let offer of offers">        
+        <app-result-unity [offer]="offer"></app-result-unity>
+</div>

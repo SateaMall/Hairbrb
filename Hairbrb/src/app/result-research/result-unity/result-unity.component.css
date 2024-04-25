@@ -1,0 +1,62 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.rating .fa-star {
+    color: #000000; 
+    margin-right: 3px;
+    font-size: 0.75em;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.location {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+
+
+.availability {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+.price-container {
+  display: flex;
+  align-items: baseline;
+  margin-top: 8px;
+}
+
+.price {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.currency {
+  margin-left: 4px;
+}
+
+.per-night {
+  margin-left: 4px;
+  font-size: 0.9em;
+  color: #666;
+}

@@ -1,0 +1,21 @@
+<div class="card">
+     <!--img src="path-to-image.jpg" alt="Listing Image" class="card-img"-->
+  <div class="card-content">
+    <div class="top-row">
+      <p class="location">{{ listing.location }}</p>
+      <div class="rating">
+        <i class="fas fa-star"></i> <!-- Full star icon -->
+        <i class="fas fa-star"></i> <!-- Repeat for as many stars as you need -->
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+    </div>
+    <p class="availability">{{ listing.availability }}</p>
+    <div class="price-container">
+      <span class="price">{{ listing.price }}</span>
+      <span class="currency">{{ listing.currency }}</span>
+      <span class="per-night">par nuit</span>
+    </div>
+  </div>
+</div>
