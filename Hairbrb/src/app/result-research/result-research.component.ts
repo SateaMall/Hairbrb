@@ -20,7 +20,6 @@ export class ResultResearchComponent implements OnInit{
 
   ngOnInit(): void {
     this.data=this._search.getBiens();
-    console.warn("hi");
     console.warn(this.data);
   }
 
