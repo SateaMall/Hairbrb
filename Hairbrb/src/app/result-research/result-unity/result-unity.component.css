@@ -1,11 +1,16 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 .card {
+  position: relative;  /* Added to establish a positioning context */
+  margin: 25px;
   width: 300px;
+  height: 400px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
+  padding-bottom: 50px;  /* Add padding to prevent content from overlapping the button */
 }
+
 top-row {
     display: flex;
     justify-content: space-between;
@@ -59,4 +64,23 @@ top-row {
   margin-left: 4px;
   font-size: 0.9em;
   color: #666;
+}
+.moreInfo-btn {
+  position: absolute;  /* Position the button absolutely inside the card */
+  bottom: 10px;        /* Distance from the bottom of the card */
+  left: 50%;           /* Center the button horizontally */
+  transform: translateX(-50%); /* Adjust horizontal centering */
+  width: 90%;          /* Make the button width less than the card to account for padding */
+
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 14px 25px;
+  border: none;
+  font-weight: 500;
+  background-color: #2b2b2b;
+  color: white;
+  cursor: pointer;
+}
+.moreInfo-btn:hover {
+  background-color: rgb(65, 63, 63);
 }

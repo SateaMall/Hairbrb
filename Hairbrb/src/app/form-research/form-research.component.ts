@@ -15,14 +15,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class FormResearchComponent {
   formData: Search ;
-  submitted : boolean = false;
   data: string[] = [];
   constructor(private _search: SearchService, private router: Router){
     this.formData = {
       startDate: '',
       endDate: '',
       minBedrooms: 1,
-      minBeds: 2,
+      minBeds: 1,
       maxPrice: 100,
       maxDistance: 500,
       state: 'Paris',
@@ -32,10 +31,6 @@ export class FormResearchComponent {
   onSubmit() {
     this._search.setSearch(this.formData);
     console.warn(this.formData);
-    this.submitted=false;
-    this.submitted=true;
-    //this.router.navigateByUrl('/result'); 
     this.router.navigate(['/result']);
   }
-    //TODO creat classes for utilisateurs, biens, and locations start services 
 }

@@ -1,3 +1,28 @@
 <div class="offers" *ngFor="let offer of offers">        
-        <app-result-unity [offer]="offer"></app-result-unity>
+        <app-result-unity [offer]="offer" (openModal)="toggleModal(true, offer)"></app-result-unity>
 </div>
+
+
+<div *ngIf="showModal" class="modal">
+        <div class="modal-content">
+                <span class="close" (click)="toggleModal(false)">&times;</span>
+                <h3>{{ selectedOffer?.location }}</h3> 
+                <p>{{ selectedOffer?.availability }}</p>
+                
+                <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm.value)">
+                        <div class="date-inputs-container">
+                                <div class="form-group">
+                                <label for="arrivalDate">Arrival Date:</label>
+                                <input type="date" id="arrivalDate" name="arrivalDate" ngModel required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="departureDate">Departure Date:</label>
+                                        <input type="date" id="departureDate" name="departureDate" ngModel required>
+                                </div>
+                        </div>
+                        
+                        <button type="submit" [disabled]="!reservationForm.valid">Reserve</button>
+                      </form>
+        </div>
+      </div>

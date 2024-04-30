@@ -17,7 +17,7 @@ export class SearchService {
   }
 
 
-  searchOffers(params: {startDate?: string, endDate?: string, city?: string, maxPrice?: number, minBedrooms?: number, minBeds?: number, maxDistance?: number}): Observable<any[]> {
+  /**searchOffers(params: {startDate?: string, endDate?: string, city?: string, maxPrice?: number, minBedrooms?: number, minBeds?: number, maxDistance?: number}): Observable<any[]> {
     const queryParams = new URLSearchParams();
     if (params.startDate !== undefined) queryParams.set('startDate', params.startDate.toString());
     if (params.endDate !== undefined) queryParams.set('endDate', params.endDate.toString());
@@ -27,23 +27,17 @@ export class SearchService {
     if (params.minBeds !== undefined) queryParams.set('minBeds', params.minBeds.toString());
     if (params.maxDistance !== undefined) queryParams.set('maxDistance', params.maxDistance.toString());
     return this._http.get<any[]>(`${this.baseUrl}/offers/search`, { params: queryParams })
-      map(offers => offers.map(offer => new Offer(
-        offer.offerId,
-        offer.propertyId,
-        offer.startDate,
-        offer.endDate
-      )))
-    );
-  }
+  }*/
   findAllOffers(): Observable<Offer[]> {
-    return this._http.get<Offer[]>(`${this.baseUrl}/offers`).pipe(
+    return this._http.get<Offer[]>(`${this.baseUrl}/offers`)
+    /*.pipe(
       map(offers => offers.map(offer => new Offer(
         offer.offerId,
         offer.propertyId,
         offer.startDate,
         offer.endDate
       )))
-    );
+    );*/
   }
 
 }
