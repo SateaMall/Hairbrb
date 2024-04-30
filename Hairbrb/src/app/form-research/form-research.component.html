@@ -21,6 +21,8 @@
               name="start_date"
               id="start_date"
               class="formbold-form-input"
+              [min]="today"
+              [(ngModel)]="formData.startDate"
               [(ngModel)]="formData.startDate"
             />
           </div>
@@ -32,6 +34,7 @@
               name="end_date"
               id="end_date"
               class="formbold-form-input"
+              [min]="formData.startDate"
               [(ngModel)]="formData.endDate"
             />
           </div>

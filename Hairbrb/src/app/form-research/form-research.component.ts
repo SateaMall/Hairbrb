@@ -16,7 +16,12 @@ import { RouterOutlet } from '@angular/router';
 export class FormResearchComponent {
   formData: Search ;
   data: string[] = [];
+  today: any;
+  startDate: any;
+  endDate: any;
   constructor(private _search: SearchService, private router: Router){
+    const currentDate = new Date();
+    this.today = currentDate.toISOString().split('T')[0]; // Format as "YYYY-MM-DD"
     this.formData = {
       startDate: '',
       endDate: '',

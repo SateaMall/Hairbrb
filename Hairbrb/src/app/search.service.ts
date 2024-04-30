@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Offer } from './models/offer.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Search } from './models/search.model';
@@ -29,15 +29,22 @@ export class SearchService {
     return this._http.get<any[]>(`${this.baseUrl}/offers/search`, { params: queryParams })
   }*/
   findAllOffers(): Observable<Offer[]> {
-    return this._http.get<Offer[]>(`${this.baseUrl}/offers`)
-    /*.pipe(
+    alert( this._http.get<string[]>(`${this.baseUrl}/offers`))
+    return this._http.get<string[]>(`${this.baseUrl}/offers`)
+    .pipe(
       map(offers => offers.map(offer => new Offer(
-        offer.offerId,
-        offer.propertyId,
-        offer.startDate,
-        offer.endDate
-      )))
-    );*/
+        "back",
+        "back",
+        "back",
+        "back",
+        55,
+        55
+      ))),
+      catchError(error => {
+        console.error('Error fetching offers', error);
+        return throwError(error); // or return an empty array or default values as appropriate
+      })
+    );
   }
 
 }

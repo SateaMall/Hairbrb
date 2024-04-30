@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ResultResearchComponent implements OnInit{
 
+  startDate: any;
+  endDate: any;
+
   onSubmit(formData: any): void {
     console.log('Reservation data:', formData);
     //TODO Call a servic to reserve 
@@ -33,7 +36,7 @@ export class ResultResearchComponent implements OnInit{
   data: any;
   public offers: Offer[] = [];
   constructor(public _search: SearchService,private router: Router){
-    this.offers.push(new Offer( "id1", "hamburg , 2222","15janv à 25janv",  250, 3));
+    this.offers.push(new Offer( "id1", "hamburg , 2222","15-05-1999","20-05-1999",  250, 3));
   }
 
   ngOnInit(): void {
