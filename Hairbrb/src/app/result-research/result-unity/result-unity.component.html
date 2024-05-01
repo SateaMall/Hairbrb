@@ -2,17 +2,17 @@
      <!--img src="path-to-image.jpg" alt="Listing Image" class="card-img"-->
   <div class="card-content">
     <div class="top-row">
-      <p class="location">{{ offer.location }}</p>
+      <p class="location">{{ offer.property.city}}</p>
       <div class="rating">
         <!-- Display full stars -->
-        <i class="fas fa-star" *ngFor="let star of offer.bl_stars"></i>
+        <i class="fas fa-star" *ngFor="let star of offer.property.bl_stars"></i>
         <!-- Optionally display empty stars -->
-        <i class="far fa-star" *ngFor="let star of offer.wh_stars"></i>
+        <i class="far fa-star" *ngFor="let star of offer.property.wh_stars"></i>
       </div>
     </div>
     <p class="availability">{{ offer.startDate }} to {{ offer.endDate }}</p> 
     <div class="price-container">
-      <span class="price">{{ offer.price }}</span>
+      <span class="price">{{ offer.property.price }}</span>
       <span class="currency">€</span>
       <span class="per-night">par nuit</span>
     </div>

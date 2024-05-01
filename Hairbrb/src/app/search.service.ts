@@ -3,6 +3,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 import { Offer } from './models/offer.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Search } from './models/search.model';
+import { Property } from './models/property.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,6 @@ export class SearchService {
     
   }
 
-
   /**searchOffers(params: {startDate?: string, endDate?: string, city?: string, maxPrice?: number, minBedrooms?: number, minBeds?: number, maxDistance?: number}): Observable<any[]> {
     const queryParams = new URLSearchParams();
     if (params.startDate !== undefined) queryParams.set('startDate', params.startDate.toString());
@@ -29,20 +29,17 @@ export class SearchService {
     return this._http.get<any[]>(`${this.baseUrl}/offers/search`, { params: queryParams })
   }*/
   findAllOffers(): Observable<Offer[]> {
-    alert( this._http.get<string[]>(`${this.baseUrl}/offers`))
-    return this._http.get<string[]>(`${this.baseUrl}/offers`)
+    return this._http.get<Offer[]>(`${this.baseUrl}/offers`)
     .pipe(
-      map(offers => offers.map(offer => new Offer(
-        "back",
-        "back",
-        "back",
-        "back",
-        55,
-        55
-      ))),
+      map(offers => {
+        alert(offers);
+        console.log(offers); // To see the data in the console
+        return offers.map(offer => new Offer("back",new Property("back","back","back","back","back",4,4,4,4,4),"back","back"))
+    }
+      ),
       catchError(error => {
         console.error('Error fetching offers', error);
-        return throwError(error); // or return an empty array or default values as appropriate
+        return throwError(() => new Error('Error fetching offers'));
       })
     );
   }

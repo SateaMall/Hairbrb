@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ResultUnityComponent } from "./result-unity/result-unity.component";
 import { Offer } from '../models/offer.model';
 import { FormsModule } from '@angular/forms';
+import { Property } from '../models/property.model';
 
 @Component({
     selector: 'app-result-research',
@@ -36,12 +37,19 @@ export class ResultResearchComponent implements OnInit{
   data: any;
   public offers: Offer[] = [];
   constructor(public _search: SearchService,private router: Router){
-    this.offers.push(new Offer( "id1", "hamburg , 2222","15-05-1999","20-05-1999",  250, 3));
+    this.offers.push(new Offer( "id1",new Property("id1","email","Paris","570 bla bla", "34090", 2,2,100,2,3), "15-05-1999","20-05-1999"));
   }
 
   ngOnInit(): void {
-    this.data=this._search.findAllOffers();
-    console.warn(this.data);
+    const offres=this._search.findAllOffers().subscribe({
+      next: (offers) => {
+        this.offers = offers;
+      },
+      error: (error) => {
+        console.error('Failed to load offers:', error.message);
+      }
+    });
+    alert(offres);
   }
-
+  
 }
