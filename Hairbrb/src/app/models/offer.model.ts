@@ -5,7 +5,7 @@ export class Offer {
     property: Property;
     startDate: string;
     endDate: string;
-
+  
 
     constructor( offreId: String, property: Property, startDate: string, endDate: string) {
       this.offerId=offreId;

@@ -34,14 +34,12 @@ export class ResultResearchComponent implements OnInit{
     this.selectedOffer = offer;
   }
 
-  data: any;
   public offers: Offer[] = [];
   constructor(public _search: SearchService,private router: Router){
-    this.offers.push(new Offer( "id1",new Property("id1","email","Paris","570 bla bla", "34090", 2,2,100,2,3), "15-05-1999","20-05-1999"));
   }
 
   ngOnInit(): void {
-    const offres=this._search.findAllOffers().subscribe({
+    const offres=this._search.getOffers().subscribe({
       next: (offers) => {
         this.offers = offers;
       },
@@ -49,7 +47,6 @@ export class ResultResearchComponent implements OnInit{
         console.error('Failed to load offers:', error.message);
       }
     });
-    alert(offres);
   }
   
 }

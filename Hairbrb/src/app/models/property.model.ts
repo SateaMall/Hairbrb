@@ -1,4 +1,5 @@
 export class Property {
+    
     propertyId: string;
     ownerEmail: string;
     city: string;
@@ -11,6 +12,7 @@ export class Property {
     bl_stars: number [];
     wh_stars: number [];
     rating: number;
+    imageUrl: string;
     constructor(
       propertyId: string,
       ownerEmail: string,
@@ -21,7 +23,8 @@ export class Property {
       bedrooms: number,
       distance: number,
       price: number,
-      rating: number
+      rating: number,
+      imageUrl: string
     ) {
       this.propertyId = propertyId;
       this.ownerEmail = ownerEmail;
@@ -35,13 +38,13 @@ export class Property {
       this.rating=rating;
       this.bl_stars=this.createArray(rating);
       this.wh_stars= this.createArray(5-rating);
+      this.imageUrl=imageUrl;
     }
     
 
     createArray(num: number): any[] {
       return Array(num).fill(0);
     }
-    // Example method to get full address
     getFullAddress(): string {
       return `${this.street}, ${this.city}, ${this.postalCode}`;
     }

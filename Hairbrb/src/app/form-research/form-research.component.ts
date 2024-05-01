@@ -27,9 +27,9 @@ export class FormResearchComponent {
       endDate: '',
       minBedrooms: 1,
       minBeds: 1,
-      maxPrice: 100,
+      maxPrice: 1000,
       maxDistance: 500,
-      state: 'Paris',
+      city: 'Paris',
       country: 'France'
     };
   }
