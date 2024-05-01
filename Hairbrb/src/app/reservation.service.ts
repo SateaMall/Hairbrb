@@ -38,4 +38,10 @@ export class ReservationService {
         })
       );
   }
+
+  // Service pour interagir avec l'API backend
+getBookedPeriods(propertyId?: string): Observable<any> {
+  return this._http.get(`http://localhost:3000/bookings/availability?propertyId=${propertyId}`);
+}
+
 }
