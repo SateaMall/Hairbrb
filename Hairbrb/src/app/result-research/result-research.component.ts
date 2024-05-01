@@ -6,6 +6,7 @@ import { ResultUnityComponent } from "./result-unity/result-unity.component";
 import { Offer } from '../models/offer.model';
 import { FormsModule } from '@angular/forms';
 import { Property } from '../models/property.model';
+import { ReservationService } from '../reservation.service';
 
 @Component({
     selector: 'app-result-research',
@@ -19,24 +20,24 @@ export class ResultResearchComponent implements OnInit{
   startDate: any;
   endDate: any;
 
-  onSubmit(formData: any): void {
-    console.log('Reservation data:', formData);
-    //TODO Call a servic to reserve 
-
-    this.showModal = false;
-  }
-
   showModal = false;
   selectedOffer?: Offer;
+  public offers: Offer[] = [];
+
+  constructor(public _search: SearchService,public _reserve: ReservationService,private router: Router){
+  }
+  onSubmit(formData: any): void {
+    console.log('Reservation data:', formData);
+    //this._reserve.reserve(this.selectedOffer.propertyId.propertyId)
+    this.showModal = false;
+  }
 
   toggleModal(open: boolean, offer?: Offer): void {
     this.showModal = open;
     this.selectedOffer = offer;
   }
 
-  public offers: Offer[] = [];
-  constructor(public _search: SearchService,private router: Router){
-  }
+
 
   ngOnInit(): void {
     const offres=this._search.getOffers().subscribe({

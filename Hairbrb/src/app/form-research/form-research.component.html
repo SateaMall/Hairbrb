@@ -60,7 +60,18 @@
               id="min_beds"
               class="formbold-form-input"
               [(ngModel)]="formData.minBeds"
-              min="&"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="minRating" class="formbold-form-label"> Minimum stars </label>
+            <input
+              type="number"
+              name="minRating"
+              id="minRating"
+              class="formbold-form-input"
+              [(ngModel)]="formData.minRating"
+              min="1"
             />
           </div>
         </div>
