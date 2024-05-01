@@ -23,12 +23,13 @@ export class FormResearchComponent {
     const currentDate = new Date();
     this.today = currentDate.toISOString().split('T')[0]; // Format as "YYYY-MM-DD"
     this.formData = {
-      startDate: '',
+      startDate: this.today,
       endDate: '',
       minBedrooms: 1,
       minBeds: 1,
+      minRating:0,
       maxPrice: 1000,
-      maxDistance: 500,
+      maxDistance: 1500,
       city: 'Paris',
       country: 'France'
     };

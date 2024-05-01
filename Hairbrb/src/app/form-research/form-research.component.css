@@ -24,13 +24,14 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
+    background-color: rgb(247, 247, 247);;
   }
 
   .formbold-form-wrapper {
     margin: 0 auto;
     max-width: 570px;
     width: 100%;
-    background: white;
+    background-color: rgb(247, 247, 247);;
     padding: 40px;
   }
 

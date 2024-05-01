@@ -55,8 +55,8 @@ export class SearchService {
           return new Offer(
             offer.offerId,
             property,
-            new Date(offer.startDate * 1000).toISOString(),
-            new Date(offer.endDate * 1000).toISOString() //TODO modify
+            this.parseDate(offer.startDate).toISOString(),
+            this.parseDate(offer.endDate).toISOString() //TODO modify
           );
         });
       }),
@@ -67,5 +67,11 @@ export class SearchService {
     );
   }
 
- 
+  parseDate(dateNumber : string) : Date {
+    const dateString = dateNumber.toString();
+    const year = parseInt(dateString.substring(0, 4), 10);
+    const month = parseInt(dateString.substring(4, 6), 10) - 1; // Les mois en JS sont indexés à partir de 0
+    const day = parseInt(dateString.substring(6, 8), 10);
+    return new Date(year, month, day);
+  }
 }

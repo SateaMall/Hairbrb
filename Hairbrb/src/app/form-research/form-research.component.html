@@ -3,10 +3,9 @@
     
       <form #userForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="formbold-form-title">
-            <h2 class="">Rental search form</h2>
+            <h2 class="">Welcome to Hairbrb!</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt.
+            Find the perfect stay in the heart of your favorite destinations. Whether you're traveling for leisure or business, our extensive listings of homes and apartments ensure you find the best fit tailored to your needs. Begin your adventure by selecting your dates and preferences below.
           </p>
         </div>
   
@@ -71,7 +70,7 @@
               id="minRating"
               class="formbold-form-input"
               [(ngModel)]="formData.minRating"
-              min="1"
+              min="0"
             />
           </div>
         </div>
