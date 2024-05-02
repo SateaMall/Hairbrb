@@ -18,10 +18,10 @@ export class PopupComponent implements OnInit{
 
   @Input()
   selectedOffer?: Offer;
-
+  today: Date = new Date();
   formReservation_popup: boolean;
-  startDate: any;
-  endDate: any;
+  startDate: Date | null = null;  // Assurez-vous que c'est un objet Date ou null
+  endDate: Date | null = null; 
   renterEmail: any;
   bookedPeriods: any[] = [];
   review: any;
@@ -54,7 +54,7 @@ export class PopupComponent implements OnInit{
   onSubmit(formData: any): void {
     console.log('Reservation data:', formData);
     if (this.selectedOffer?.property?.propertyId) {
-      console.log(this._reservaiton.reserve(this.selectedOffer.property.propertyId,this.renterEmail,this.startDate,this.endDate,this.review,this.stars));
+    //  console.log(this._reservaiton.reserve(this.selectedOffer.property.propertyId,this.renterEmail,this.startDate,this.endDate,this.review,this.stars));
     }
     //this.showModal = false;
   }
