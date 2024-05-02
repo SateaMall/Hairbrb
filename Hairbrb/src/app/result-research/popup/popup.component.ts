@@ -53,14 +53,29 @@ export class PopupComponent implements OnInit{
 
   onSubmit(formData: any): void {
     console.log('Reservation data:', formData);
-    if (this.selectedOffer?.property?.propertyId) {
-    //  console.log(this._reservaiton.reserve(this.selectedOffer.property.propertyId,this.renterEmail,this.startDate,this.endDate,this.review,this.stars));
+    if (this.selectedOffer?.property?.propertyId && this.startDate && this.endDate) {
+      const result = this._reservaiton.reserve(
+        this.selectedOffer.property.propertyId,
+        this.renterEmail,
+        this.formatDate(this.startDate),
+        this.formatDate(this.endDate),
+        this.review
+      );
+      console.log(
+        this.selectedOffer.property.propertyId,
+        this.renterEmail,
+        this.formatDate(this.startDate),
+        this.formatDate(this.endDate),
+        this.review,
+        this.stars
+      );
+      console.log(result);
+      // this.showModal = false; // Uncomment this line if you wish to hide a modal after submitting
     }
-    //this.showModal = false;
   }
-
-
   
+
+
     dateFilter = (d: Date | null): boolean => {
       const date = d || new Date();
       return !this.bookedPeriods.some(period => {
@@ -69,5 +84,16 @@ export class PopupComponent implements OnInit{
         return date >= startDate && date <= endDate;
       });
     };
+
+     formatDate(date: Date): string {
+      const year = date.getFullYear();
+      const mois = date.getMonth() + 1;
+      const jour = date.getDate();
+    
+      const monthFormatted = mois < 10 ? `0${mois}` : mois.toString();
+      const dayFormatted = jour < 10 ? `0${jour}` : jour.toString();
+    
+      return `${year}${monthFormatted}${dayFormatted}`;
+    }
 
 }

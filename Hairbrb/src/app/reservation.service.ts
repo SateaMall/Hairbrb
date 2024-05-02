@@ -11,16 +11,15 @@ export class ReservationService {
 
   constructor(private _http:HttpClient) {}
 
-  reserve(propertyId: string, renterEmail: string, startDate: string, endDate: string, review:string,stars: number): Observable<Booking> {
+  reserve(propertyId: string, renterEmail: string, startDate: string, endDate: string, review?:string): Observable<Booking> {
     const bookingData = {
       propertyId: propertyId,
       renterEmail: renterEmail,
       startDate: startDate,
       endDate: endDate,
-      review: review,
-      stars: stars
-    };
-  
+      ...(review && {review: review}) 
+      };
+      console.log(bookingData);
     return this._http.post<any>(`${this.baseUrl}/bookings`, bookingData)
       .pipe(
         map(response => {

@@ -3,17 +3,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
 app-result-research {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    justify-content: space-between; /* Espace égal entre les éléments */
-    align-items: center; /* Alignement vertical au centre des éléments */
-}
-.offers {
   display: flex;
-  flex-direction: row; /* aligne les enfants horizontalement */
-  flex-wrap: wrap; /* permet aux éléments de passer à la ligne suivante si nécessaire */
-  justify-content: space-between; /* espace égal entre les éléments */
-  align-items: center; /* aligne les éléments verticalement au centre */
+  flex-direction: row;
+  flex-wrap: wrap; 
+  align-items: center; 
 }
