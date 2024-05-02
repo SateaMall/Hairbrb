@@ -25,6 +25,7 @@ export class ReservationService {
     return this._http.post<any>(`${this.baseUrl}/bookings`, bookingData)
       .pipe(
         tap(response => {  
+          console.log(response);
           console.log('HTTP Status Code:', response.status); // Log the status code
           // Assuming the response structure directly matches what Booking needs
           return new Booking(

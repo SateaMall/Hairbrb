@@ -30,7 +30,7 @@ export class FormResearchComponent {
       minRating:0,
       maxPrice: 1000,
       maxDistance: 1500,
-      city: 'Paris',
+      city: '',
       country: 'France'
     };
   }
