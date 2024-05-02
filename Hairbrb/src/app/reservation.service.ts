@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { Booking } from './models/booking.model';
 
 @Injectable({
@@ -11,26 +11,29 @@ export class ReservationService {
 
   constructor(private _http:HttpClient) {}
 
-  reserve(propertyId: string, renterEmail: string, startDate: string, endDate: string, review?:string): Observable<Booking> {
+  reserve(propertyId: string, renterEmail: string, startDate: string, endDate: string, review?: string): Observable<Booking> {
+   
     const bookingData = {
       propertyId: propertyId,
       renterEmail: renterEmail,
-      startDate: startDate,
-      endDate: endDate,
-      ...(review && {review: review}) 
-      };
-      console.log(bookingData);
+      startDate: parseInt(startDate),  // Assuming startDate is a string in 'YYYYMMDD' format
+      endDate: parseInt(endDate),      // Assuming endDate is a string in 'YYYYMMDD' format
+      ...(review && { review: review })
+    };
+    console.log(bookingData);
+
     return this._http.post<any>(`${this.baseUrl}/bookings`, bookingData)
       .pipe(
-        map(response => {
+        tap(response => {  
+          console.log('HTTP Status Code:', response.status); // Log the status code
           // Assuming the response structure directly matches what Booking needs
           return new Booking(
-            response._id,       // Booking ID from response, if it's returned; otherwise adjust as needed
+            response._id,       // Booking ID from response
             response.propertyId,
             response.renterEmail,
-            parseInt(response.startDate), 
-            parseInt(response.endDate),
-            response.review     
+            response.startDate, // Assuming the API returns these as numbers or whatever format is required
+            response.endDate,
+            response.review
           );
         }),
         catchError(error => {

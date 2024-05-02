@@ -52,7 +52,6 @@ export class PopupComponent implements OnInit{
   }
 
   onSubmit(formData: any): void {
-    console.log('Reservation data:', formData);
     if (this.selectedOffer?.property?.propertyId && this.startDate && this.endDate) {
       const result = this._reservaiton.reserve(
         this.selectedOffer.property.propertyId,
@@ -60,6 +59,15 @@ export class PopupComponent implements OnInit{
         this.formatDate(this.startDate),
         this.formatDate(this.endDate),
         this.review
+      );
+      result.subscribe({
+        next: (booking)=> {
+          console.log(booking)
+        },
+        error: (error) => {
+          console.error('Failed to load offers:', error.message);
+        }
+        }
       );
       console.log(
         this.selectedOffer.property.propertyId,
