@@ -10,7 +10,7 @@
         <i class="far fa-star" *ngFor="let star of offer.property.wh_stars"></i>
       </div>
     </div>
-    <p class="availability">{{ offer.startDate }} to {{ offer.endDate }}</p> 
+    <p class="availability">{{ offer.startDate.toLocaleDateString('en-GB').split('/').reverse().join('-') }} to {{ offer.endDate.toLocaleDateString('en-GB').split('/').reverse().join('-')  }}</p> 
     <div class="price-container">
       <span class="price">{{ offer.property.price }}</span>
       <span class="currency">€</span>

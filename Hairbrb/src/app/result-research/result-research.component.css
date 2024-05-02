@@ -24,7 +24,8 @@
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: none; /* Removes the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.452); /* Adds a subtle shadow */
     width: 80%;
     max-width: 700px;
   }
@@ -43,46 +44,4 @@
   }
 
 
-  /****** form ******/
-  .modal-content form {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-  }
-  .date-inputs-container {
-    display: flex;
-    justify-content: space-between; 
-  }
   
-  .modal-content .form-group {
-    margin-bottom: 10px;
-  }
-  
-  .modal-content label {
-    margin-bottom: 5px;
-  }
-  
-  .modal-content input[type="date"],
-  .modal-content button {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box; /* Includes padding and border in the element's width */
-  }
-  
-  .modal-content button {
-    padding: 10px 20px;
-    margin-top: 10px; 
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .modal-content button:hover,
-  .modal-content button:focus {
-    background-color: #5ec962;
-    cursor: pointer;
-  }
-  .modal-content button[disabled] {
-    background-color: #ccc;
-    cursor: default;
-  }

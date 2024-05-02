@@ -46,7 +46,7 @@ export class SearchService {
             offer.propertyId.postalCode,
             offer.propertyId.beds,
             offer.propertyId.bedrooms,
-            offer.propertyId.distance,
+            offer.propertyId.distance,//en km
             offer.propertyId.price,
             offer.propertyId.rating,
             offer.propertyId.imageUrl
@@ -55,8 +55,8 @@ export class SearchService {
           return new Offer(
             offer.offerId,
             property,
-            this.parseDate(offer.startDate).toISOString(),
-            this.parseDate(offer.endDate).toISOString() //TODO modify
+            this.parseDate(offer.startDate),
+            this.parseDate(offer.endDate)
           );
         });
       }),

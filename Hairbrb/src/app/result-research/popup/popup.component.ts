@@ -10,19 +10,28 @@ import { MatNativeDateModule } from '@angular/material/core';
 @Component({
   selector: 'app-popup',
   standalone: true,
-  imports: [FormsModule, MatDatepickerModule, MatInputModule, MatNativeDateModule],
+  imports: [NgIf,NgFor,FormsModule, MatDatepickerModule, MatInputModule, MatNativeDateModule],
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css'
 })
 export class PopupComponent implements OnInit{
-  startDate: any;
-  endDate: any;
+
   @Input()
   selectedOffer?: Offer;
+
+  formReservation_popup: boolean;
+  startDate: any;
+  endDate: any;
+  renterEmail: any;
   bookedPeriods: any[] = [];
+  review: any;
+  stars: any;
+    
 
 
-  constructor(public _reservaiton:ReservationService){}
+  constructor(public _reservaiton:ReservationService){
+    this.formReservation_popup=false;
+  }
  
 
   ngOnInit(): void {
@@ -38,9 +47,15 @@ export class PopupComponent implements OnInit{
     }
   }
 
+  activateForm() {
+    this.formReservation_popup=true;
+  }
+
   onSubmit(formData: any): void {
     console.log('Reservation data:', formData);
-    //this._reserve.reserve(this.selectedOffer.propertyId.propertyId)
+    if (this.selectedOffer?.property?.propertyId) {
+      console.log(this._reservaiton.reserve(this.selectedOffer.property.propertyId,this.renterEmail,this.startDate,this.endDate,this.review,this.stars));
+    }
     //this.showModal = false;
   }
 

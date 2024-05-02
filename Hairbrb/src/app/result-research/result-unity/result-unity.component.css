@@ -2,11 +2,11 @@
 
 .card {
   position: relative;  /* Added to establish a positioning context */
-  margin: 25px;
+  margin: 20px;
   width: 300px;
-  height: 400px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  height: 390px;
+  border: none; /* Removes the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
   overflow: hidden;
   padding-bottom: 50px;  /* Add padding to prevent content from overlapping the button */
 }
@@ -25,7 +25,8 @@ top-row {
 
 .card-img {
   width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
 }
 
 .card-content {

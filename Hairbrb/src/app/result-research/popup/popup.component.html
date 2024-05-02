@@ -1,30 +1,73 @@
 <div class="modal-content">
-    <h3>{{ selectedOffer?.property?.getFullAddress }}</h3> 
-    <p>{{ selectedOffer?.startDate }}</p>
+    <h3 class="title-popup">{{ selectedOffer?.property?.getFullAddress() }}</h3>
+    <img [src]="selectedOffer?.property?.imageUrl" alt="Property Image" class="property-image">
     
-    <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm.value)">
-            <div class="date-inputs-container">
-                    <div class="form-group">
-                            <label for="arrivalDate">Arrival Date:</label>
-                            <input type="date" id="arrivalDate" name="arrivalDate" [(ngModel)]="startDate"  [min]="selectedOffer?.startDate" 
-                            [max]="selectedOffer?.endDate" required>
-                    </div>
+    <div *ngIf="!(formReservation_popup)" class="property-details">
+        <p><strong>Owner:</strong> {{ selectedOffer?.property?.ownerEmail }}</p>
+        <p><strong>Beds:</strong> {{ selectedOffer?.property?.beds }}</p>
+        <p><strong>Bedrooms:</strong> {{ selectedOffer?.property?.bedrooms }}</p>
+        <p><strong>Price:</strong> ${{ selectedOffer?.property?.price }}</p>
+        <p><strong>Distance to City Center:</strong> {{ selectedOffer?.property?.distance}} meters</p>
+        <p><strong>Rating:</strong>
+            <span *ngFor="let star of selectedOffer?.property?.bl_stars" class="star">&#9733;</span>
+            <span *ngFor="let star of selectedOffer?.property?.wh_stars" class="star-empty">&#9734;</span>
+        </p>
+        <button  (click)="activateForm()">Fill The Form</button>
+    </div>
 
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" placeholder="Choose a date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                      
-                      
 
-                    <div class="form-group">
-                            <label for="departureDate">Departure Date:</label>
-                            <input type="date" id="departureDate" name="departureDate" [(ngModel)]="endDate"  [min]="startDate" 
-                            [max]="selectedOffer?.endDate" required>
-                    </div>
+
+    <div *ngIf="(formReservation_popup)" class="booking" >
+        <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm.value)">
+            <div class="formbold-input-flex">
+                
+                <mat-form-field class="form-group">
+                    <label for="arrivalDate" class="formbold-form-label">Arrival Date:</label>
+                    <input class="formbold-form-input" id="arrivalDate" name="arrivalDate" matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" placeholder="Choose a date" [(ngModel)]="startDate"
+                 required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="form-group">
+                    <label for="departureDate" class="formbold-form-label">Departure Date:</label>
+                    <input class="formbold-form-input" id="departureDate" name="departureDate" matInput [matDatepicker]="picker1" [matDatepickerFilter]="dateFilter" placeholder="Choose a date" [(ngModel)]="endDate"
+                     required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                
+
             </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="renterEmail" class="formbold-form-label" >Your Email:</label>
+                    <input class="formbold-form-input" type="email" id="renterEmail" name="renterEmail" [(ngModel)]="renterEmail" required email placeholder="Enter your email">
+                </div>
+                <div>
+                    <label for="stars" class="formbold-form-label" >Your rating:</label>
+                    <input class="formbold-form-input" type="number" id="stars" name="stars" [(ngModel)]="stars"   min="0" max="5">
+                </div> 
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="Review" class="formbold-form-label" >Your review:</label>
+                    <input class="formbold-form-input" type="textarea" id="Review" name="Review" [(ngModel)]="review"  placeholder="Enter your review">
+
+                
+                </div>
             
-            <button type="submit" [disabled]="!reservationForm.valid">Reserve</button>
-          </form>
+            <button type="submit" [disabled]="!reservationForm.valid" >Reserve</button>
+        </form>
+                <!--div class="form-group" >
+                    <label for="arrivalDate" class="formbold-form-label">Arrival Date:</label>
+                    <input class="formbold-form-input" type="date" id="arrivalDate" name="arrivalDate" [(ngModel)]="startDate" [min]="selectedOffer?.startDate" 
+                    [max]="selectedOffer?.endDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="departureDate" class="formbold-form-label">Departure Date:</label>
+                    <input class="formbold-form-input" type="date" id="departureDate" name="departureDate" [(ngModel)]="endDate" [min]="startDate" 
+                    [max]="selectedOffer?.endDate" required>
+                </div-->
+    </div>
+    
 </div>
