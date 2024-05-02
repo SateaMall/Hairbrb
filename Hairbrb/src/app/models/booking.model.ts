@@ -21,4 +21,7 @@ export class Booking {
         this.endDate = endDate;
         this.review = review;
     }
+    getBookingId():string {
+        return this.bookingId;
+    }
 }

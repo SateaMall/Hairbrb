@@ -15,8 +15,6 @@
         <button  (click)="activateForm()">Fill The Form</button>
     </div>
 
-
-
     <div *ngIf="(formReservation_popup)" class="booking" >
         <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm.value)">
             <div class="formbold-input-flex">

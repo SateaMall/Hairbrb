@@ -6,6 +6,7 @@ import { ReservationService } from '../../reservation.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-popup',
@@ -29,7 +30,7 @@ export class PopupComponent implements OnInit{
     
 
 
-  constructor(public _reservaiton:ReservationService){
+  constructor(public _reservaiton:ReservationService, private router: Router,){
     this.formReservation_popup=false;
   }
  
@@ -61,28 +62,26 @@ export class PopupComponent implements OnInit{
         this.review
       );
       result.subscribe({
-        next: (booking)=> {
-          console.log(booking)
-        },
+        next: (booking) => {
+          console.log('Received booking:', booking); // Log the entire booking object
+          console.log('Booking ID:', booking.bookingId); // Log the Booking ID specifically
+  
+          if (booking) {
+            alert("The booking is done");
+            this.router.navigate(['/form']); 
+
+          } else {
+            alert("There is a problem with the booking, please retry.");
+            
+          }},
         error: (error) => {
           console.error('Failed to load offers:', error.message);
         }
         }
       );
-      console.log(
-        this.selectedOffer.property.propertyId,
-        this.renterEmail,
-        this.formatDate(this.startDate),
-        this.formatDate(this.endDate),
-        this.review,
-        this.stars
-      );
-      console.log(result);
-      // this.showModal = false; // Uncomment this line if you wish to hide a modal after submitting
+
     }
   }
-  
-
 
     dateFilter = (d: Date | null): boolean => {
       const date = d || new Date();
