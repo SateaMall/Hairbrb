@@ -1,4 +1,5 @@
 # Hairbrb
+A website that has the same functionalites as Airbnb.
 
 **Base Mongo:**
 Schema de la base:
